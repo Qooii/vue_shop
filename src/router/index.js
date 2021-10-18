@@ -4,6 +4,8 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import Users from '../components/user/Users.vue'
+import Rights from '../components/power/Rights.vue'
+import Roles from '../components/power/Roles.vue'
 
 Vue.use(VueRouter)
 
@@ -19,14 +21,21 @@ const routes = [{
     path: '/home',
     component: Home,
     redirect: '/welcome',
-    children: [
-      {
+    children: [{
         path: '/welcome',
         component: Welcome
       },
       {
         path: '/users',
         component: Users
+      },
+      {
+        path: '/rights',
+        component: Rights
+      },
+      {
+        path: '/roles',
+        component: Roles
       }
     ]
   }
@@ -42,16 +51,14 @@ router.beforeEach((to, from, next) => {
   // from 表示从那个路径跳转而来
   // nest 是一个函数，表示放行
   // next的两种用法：1.next() 放行 2.next('指定路径') 强制跳转到指定路径
-  if(to.path === '/login'){
+  if (to.path === '/login') {
     return next()
-  }
-  else{
+  } else {
     // 获取 token
     const tokenStr = window.sessionStorage.getItem('token')
-    if(!tokenStr){
+    if (!tokenStr) {
       return next('/login')
-    }
-    else{
+    } else {
       return next()
     }
   }

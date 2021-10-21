@@ -213,7 +213,7 @@ export default {
           if (res.meta.status !== 201) {
             return this.$message.error("添加分类失败！")
           }
-          else{
+          else {
             this.$message.success("添加分类成功！")
             this.getCateList()
             this.addCateDialogClosed = false

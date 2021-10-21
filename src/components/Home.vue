@@ -4,32 +4,20 @@
       <!-- 头部区域 -->
       <el-header>
         <div>
-          <img src="../assets/img/logo.jpg"
-               alt="logo">
+          <img src="../assets/img/logo.jpg" alt="logo">
           <span>电商后台管理系统</span>
         </div>
-        <el-button type="info"
-                   @click="logout">退出</el-button>
+        <el-button type="info" @click="logout">退出</el-button>
       </el-header>
       <!-- 页面主体区域 -->
       <el-container>
         <!-- 侧边栏区域 -->
         <el-aside :width="isCollapse ? '64px' : '200px'">
-          <div class="toggle-button"
-               @click="toggleCollapse">|||</div>
+          <div class="toggle-button" @click="toggleCollapse">|||</div>
           <!-- 侧边栏菜单区域 -->
-          <el-menu background-color="#333"
-                   text-color="#fff"
-                   active-text-color="#49f"
-                   unique-opened
-                   :collapse="isCollapse"
-                   :collapse-transition="false"
-                   router
-                   :default-active="activePath">
+          <el-menu background-color="#333" text-color="#fff" active-text-color="#49f" unique-opened :collapse="isCollapse" :collapse-transition="false" router :default-active="activePath">
             <!-- 一级菜单区域 -->
-            <el-submenu :index="item.id + ''"
-                        v-for="item in menuList"
-                        :key="item.id">
+            <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
               <!-- 一级菜单模板区域 -->
               <template slot="title">
                 <!-- 图标 -->
@@ -38,10 +26,7 @@
                 <span>{{item.authName}}</span>
               </template>
               <!-- 二级菜单 -->
-              <el-menu-item :index="'/' + subItem.path"
-                            v-for="subItem in item.children"
-                            :key="subItem.id"
-                            @click="saveNavState('/' + subItem.path)">
+              <el-menu-item :index="'/' + subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveNavState('/' + subItem.path)">
                 <template slot="title">
                   <!-- 图标 -->
                   <i class="el-icon-menu"></i>
@@ -84,13 +69,13 @@ export default {
   },
   created () {
     this.getMenuList(),
-    this.activePath = window.sessionStorage.getItem('activePath')
+      this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     logout () {
       this.$message.success("退出成功！")
       // 清除指定项
-      window.sessionStorage.clear()  
+      window.sessionStorage.clear()
       // 清除指定项
       // window.sessionStorage.removeItem('token')
       this.$router.push('/login')
@@ -106,11 +91,11 @@ export default {
       }
     },
     // 点击按钮，切换菜单的折叠与展开
-    toggleCollapse() {
+    toggleCollapse () {
       this.isCollapse = !this.isCollapse
     },
     // 保存连接的激活状态
-    saveNavState(activePath) {
+    saveNavState (activePath) {
       window.sessionStorage.setItem('activePath', activePath)
       this.activePath = activePath
     }

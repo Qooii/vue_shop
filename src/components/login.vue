@@ -3,36 +3,22 @@
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="image_box">
-        <img src="../assets/img/login.jpg"
-             alt="头像">
+        <img src="../assets/img/login.jpg" alt="头像">
       </div>
       <!-- 登录表单区域 -->
-      <el-form ref="loginFormRef"
-               label-width="0px"
-               class="login_form"
-               :model="loginForm"
-               :rules="loginFormRules">
+      <el-form ref="loginFormRef" label-width="0px" class="login_form" :model="loginForm" :rules="loginFormRules">
         <!-- 用户名 -->
         <el-form-item prop="username">
-          <el-input prefix-icon="el-icon-user-solid"
-                    v-model="loginForm.username"></el-input>
+          <el-input prefix-icon="el-icon-user-solid" v-model="loginForm.username"></el-input>
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
-          <el-input type="password"
-                    prefix-icon="el-icon-lock"
-                    v-model="loginForm.password"></el-input>
+          <el-input type="password" prefix-icon="el-icon-lock" v-model="loginForm.password"></el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button type="primary"
-                     round
-                     class="btn_left"
-                     @click="login">登录</el-button>
-          <el-button type="info"
-                     round
-                     class="btn_right"
-                     @click="restLoginForm">重置</el-button>
+          <el-button type="primary" round class="btn_left" @click="login">登录</el-button>
+          <el-button type="info" round class="btn_right" @click="restLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
     </div>

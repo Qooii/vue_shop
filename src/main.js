@@ -24,6 +24,7 @@ import axios from 'axios'
 Vue.prototype.$http = axios
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
 // 设置请求拦截器(就是将请求拦截下来，做个预处理之后再发送出去)
 axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')

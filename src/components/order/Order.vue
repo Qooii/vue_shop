@@ -34,11 +34,10 @@
             {{scope.row.create_time | dateFormat}}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="230px">
-          <template slot-scope="scope">
+        <el-table-column label="操作">
+          <template>
             <el-button type="primary" icon="el-icon-edit" size="mini" @click="showBox"></el-button>
             <el-button type="success" icon="el-icon-location" size="mini" @click="showProgressBox">
-              不要点，后台会崩
             </el-button>
           </template>
         </el-table-column>
@@ -145,15 +144,16 @@ export default {
       this.$refs.addressFormRef.resetFields()
     },
     async showProgressBox () {
-      const { data: res } = await this.$http.get('/kuaidi/1106975712662')
-      if (res.meta.status !== 200) {
-        return this.$message.error("获取物流进度失败！")
-      }
-      else {
-        this.$message.success("OK")
-        this.progressInfo = res.data
-        console.log(res.data)
-      }
+      // 此接口不可用
+      // const { data: res } = await this.$http.get('/kuaidi/1106975712662')
+      // if (res.meta.status !== 200) {
+      //   return this.$message.error("获取物流进度失败！")
+      // }
+      // else {
+      //   this.$message.success("OK")
+      //   this.progressInfo = res.data
+      //   console.log(res.data)
+      // }
       this.progressVisible = true
     }
   }
